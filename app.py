@@ -23,8 +23,7 @@ def exibir_opcoes():
 def finalizar_app():
     print('Encerrando o App...')
     time.sleep(3)
-    os.system('cls')
-    print('App Finalizado com sucesso!')
+    exibir_subtitulo('App Finalizado com sucesso!')
     time.sleep(2)
     os.system('cls')
     #aqui estou DEFININDO uma FUNÇÃO para o item 4
@@ -37,19 +36,31 @@ def reiniciar_app():
 
 def opcao_invalida():
    print('Essa opção que você digitou é invalida...\n')
-   input('Digite uma tecla qualquer para retornar ao menu principal!')
+   voltar_ao_menu()
+  
+def voltar_ao_menu():
+   input('\nDigite uma tecla qualquer para retornar ao menu principal!')
    print('Carregando...')
    time.sleep(3)
    main()
 
-def cadastrar_novo_restaurante():
+def exibir_subtitulo(texto):
    os.system('cls')
-   print('Cadastro de novos restaurantes')
+   print(texto)  
+   print() 
+
+def cadastrar_novo_restaurante():
+   exibir_subtitulo('Cadastro de novos restaurantes')
    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
    restaurantes.append(nome_do_restaurante)
    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
-   input('Digite uma tecla para voltar ao menu principal')
-   main()
+   voltar_ao_menu()
+
+def listar_restaurantes():
+   exibir_subtitulo('Listagem de Restaurantes')
+   for restaurante in restaurantes:
+      print(f'{restaurante}\n')
+   voltar_ao_menu()
 
 
 def escolher_opcao():
@@ -59,16 +70,22 @@ def escolher_opcao():
       if opcao_escolha == 1:
         print('Cadastrar restaurante')
         cadastrar_novo_restaurante()
+
       elif opcao_escolha == 2:
-        print('Listar restaurantes')
+        listar_restaurantes()
+
       elif opcao_escolha == 3:
         print('Ativar restaurantes')
+
       elif opcao_escolha == 4:
         finalizar_app()
+
       elif opcao_escolha == 5:
         reiniciar_app()
+
       else:
         opcao_invalida()
+
     except ValueError:  # coloquei o ValueError para ser expecifico mas o código funciona sem o ValueError
       opcao_invalida() 
 
