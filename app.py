@@ -1,6 +1,8 @@
 import os
 import time
 
+restaurantes = []
+
 def exibir_nome_do_programa():
       print('''    
        
@@ -25,7 +27,6 @@ def finalizar_app():
     print('App Finalizado com sucesso!')
     time.sleep(2)
     os.system('cls')
-    #os.system('python app.py') REINICIAR
     #aqui estou DEFININDO uma FUNÇÃO para o item 4
 
 def reiniciar_app():
@@ -34,21 +35,45 @@ def reiniciar_app():
    os.system('cls')
    os.system('python app.py')
 
-def escolher_opcao():
-    opcao_escolha = int(input('Escolha uma opção: '))
+def opcao_invalida():
+   print('Essa opção que você digitou é invalida...\n')
+   input('Digite uma tecla qualquer para retornar ao menu principal!')
+   print('Carregando...')
+   time.sleep(3)
+   main()
 
-    if opcao_escolha == 1:
-      print('Cadastrar restaurante')
-    elif opcao_escolha == 2:
-      print('Listar restaurantes')
-    elif opcao_escolha == 3:
-      print('Ativar restaurantes')
-    elif opcao_escolha == 4:
-      finalizar_app()
-    else:
-      reiniciar_app()  
+def cadastrar_novo_restaurante():
+   os.system('cls')
+   print('Cadastro de novos restaurantes')
+   nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
+   restaurantes.append(nome_do_restaurante)
+   print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
+   input('Digite uma tecla para voltar ao menu principal')
+   main()
+
+
+def escolher_opcao():
+    try:
+      opcao_escolha = int(input('Escolha uma opção: '))
+
+      if opcao_escolha == 1:
+        print('Cadastrar restaurante')
+        cadastrar_novo_restaurante()
+      elif opcao_escolha == 2:
+        print('Listar restaurantes')
+      elif opcao_escolha == 3:
+        print('Ativar restaurantes')
+      elif opcao_escolha == 4:
+        finalizar_app()
+      elif opcao_escolha == 5:
+        reiniciar_app()
+      else:
+        opcao_invalida()
+    except ValueError:  # coloquei o ValueError para ser expecifico mas o código funciona sem o ValueError
+      opcao_invalida() 
 
 def main():
+    os.system('cls')
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
