@@ -44,13 +44,24 @@ num = int(input('Digite um número inteiro: '))
 
 for i in range(1, 11):
     tabuada = num * i
-    print(f'{num} x {i} = {tabuada}')'''
+    print(f'{num} x {i} = {tabuada}')
 
-# Atividade 6
+# Atividade 6 (possivel melhorar: sistema de adição pelo próprio usuário)
 
 numeros = [1,5,7,8,4,2,3,10]
 
-for i in numeros:
-    try:
-    except: 
-        print('Erro, começe o programa namente')
+soma = 0
+
+try:
+    for i in numeros:
+        soma += i
+        
+
+except Exception as e: 
+    print(f'Ocorreu um erro no seu programa. Erro: {e}')
+
+print(f'A soma dos números dessa lista é: {soma}')'''
+
+#Atividade 7
+
+numeros = [10, 15, 14, 7, 80]
