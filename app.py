@@ -1,7 +1,11 @@
 import os
 import time
 
-restaurantes = []
+# App para Linux
+
+restaurantes = [{"nome":"Praça", "categoria":"Japonesa", "ativo":False},
+                {"nome":"Pizza Suprema", "categoria":"Pizza", "ativo":True},
+                {"nome":"Cantina", "categoria":"Italiana", "ativo":False}]
 
 def exibir_nome_do_programa():
       print('''    
@@ -18,21 +22,22 @@ def exibir_opcoes():
       print('2. Listar restaurante')
       print('3. ativar restaurante')
       print('4. sair') 
-      print('5 Reiniciar \n')
+      print('5. Reiniciar \n')
 
 def finalizar_app():
     print('Encerrando o App...')
     time.sleep(3)
     exibir_subtitulo('App Finalizado com sucesso!')
     time.sleep(2)
-    os.system('cls')
+    os.system('clear')
     #aqui estou DEFININDO uma FUNÇÃO para o item 4
 
 def reiniciar_app():
    print('Reiniciando o App...')
    time.sleep(3)
-   os.system('cls')
-   os.system('python app.py')
+   os.system('clear')
+   os.system('python3 app.py')
+   # Para o app de windows modificar para ('python app.py')
 
 def opcao_invalida():
    print('Essa opção que você digitou é invalida...\n')
@@ -45,7 +50,7 @@ def voltar_ao_menu():
    main()
 
 def exibir_subtitulo(texto):
-   os.system('cls')
+   os.system('clear')
    print(texto)  
    print() 
 
@@ -59,7 +64,12 @@ def cadastrar_novo_restaurante():
 def listar_restaurantes():
    exibir_subtitulo('Listagem de Restaurantes')
    for restaurante in restaurantes:
-      print(f'{restaurante}\n')
+      # criando as categorias para listagem no app usando a propria lista
+      nome_restaurante = restaurante ['nome']
+      categoria_restaurantes = restaurante ['categoria']
+      ativo_restaurantes = restaurante ['ativo']
+      # Print para a visualização da lista
+      print(f'- {nome_restaurante} | {categoria_restaurantes} | {ativo_restaurantes}')
    voltar_ao_menu()
 
 
@@ -90,7 +100,8 @@ def escolher_opcao():
       opcao_invalida() 
 
 def main():
-    os.system('cls')
+    os.system('clear')
+    # para o app no windows modificar para ('cls')
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
