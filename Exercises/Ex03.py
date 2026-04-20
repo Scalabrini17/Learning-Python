@@ -1,5 +1,5 @@
 # Atividade 1
-'''print('Listas para coisas!')
+print('Listas para coisas!')
 
 numeros = [1,2,3,4,5,6,7,8,9,10]
 
@@ -60,8 +60,24 @@ try:
 except Exception as e: 
     print(f'Ocorreu um erro no seu programa. Erro: {e}')
 
-print(f'A soma dos números dessa lista é: {soma}')'''
+print(f'A soma dos números dessa lista é: {soma}')
 
 #Atividade 7
 
 numeros = [10, 15, 14, 7, 80]
+soma = 0
+
+
+try:
+    for valor in numeros:
+        soma += valor 
+    
+    media = soma / len(numeros)
+
+    print(f"A média dos valores da lista é: {media}")
+
+except ZeroDivisionError:
+    print("A lista está vazia, não é possível calcular a média")
+
+except Exception as e:
+    print(f"Ocorreu um erro: {e}")
