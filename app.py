@@ -66,7 +66,7 @@ def cadastrar_novo_restaurante():
    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
    voltar_ao_menu()
 
-def listar_restaurantes():
+def listar_restaurantes(): 
    exibir_subtitulo('Listagem de Restaurantes')
 
    print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria do restaurante'.ljust(22)} | {'Status'}')
